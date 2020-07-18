@@ -30,13 +30,21 @@ public class Main {
                 }
                 else{
                     for (int i=0;i < carros.size();i++){
-
+                        System.out.println(carros.get(i).getNome() + " da marca " + carros.get(i).getMarca() + " da cor " + carros.get(i).getCor() + " cuja descrição é " + carros.get(i).getDesc() + "\n");
                     }
                 }
             }
 
             if (menu == 2){
+                Carro carro =new Carro();
+                carro = carro.cadastrar_carro();
 
+                carros.add(carro);
+                System.out.println("Carro " + carro.getNome() + " de ID " + carro.getID() + " cadastrado com sucesso");
+            }
+
+            if (menu == 0){
+                saida = 0;
             }
 
         }while (saida!= 0);

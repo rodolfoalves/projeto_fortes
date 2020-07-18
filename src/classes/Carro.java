@@ -1,5 +1,10 @@
 package classes;
 
+import jdk.internal.cmm.SystemResourcePressureImpl;
+
+import java.util.Scanner;
+import java.util.UUID;
+
 public class Carro {
     private String ID;
     private String nome;
@@ -56,10 +61,25 @@ public class Carro {
         this.ano = ano;
     }
 
-
     public Carro cadastrar_carro(){
+        Scanner in = new Scanner(System.in);
+        UUID uuid = UUID.randomUUID();
+
         Carro carro = new Carro();
-        System.out.println("skrr skrr");
+        carro.setID(String.valueOf(uuid));
+
+        System.out.println("Infome o nome do Carro");
+        carro.setNome(in.nextLine());
+
+        System.out.println("Informe a marca do Carro");
+        carro.setMarca(in.nextLine());
+
+        System.out.println("Informe a cor do Carro");
+        carro.setCor(in.nextLine());
+
+        System.out.println("Informe a descrição do Carro");
+        carro.setDesc(in.nextLine());
+
         return carro;
     }
 }
