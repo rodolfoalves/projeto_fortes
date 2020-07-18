@@ -10,6 +10,7 @@ public class Main {
         ArrayList<Carro> carros = new ArrayList<>();
         ArrayList<Administrador> administradors = new ArrayList<>();
         ArrayList<Cliente> clientes = new ArrayList<>();
+        ArrayList<Aluguel> alugueis = new ArrayList<>();
 
         int saida = 1;
 
@@ -17,8 +18,8 @@ public class Main {
             System.out.println("Informe o que desejas fazer");
             System.out.println("1 para visualizar Carros cadastrados");
             System.out.println("2 para cadastrar Carro");
-            System.out.println("3 para marcar uma tarefa como concluída");
-            System.out.println("4 para pesquisar uma tarefa pelo título");
+            System.out.println("3 para dar entrada em um aluguel");
+            System.out.println("4 para fechar um aluguel");
             System.out.println("5 para mostrar todas as tarefas concluídas");
             System.out.println("6 para mostrar todas as tarefas pendentes");
             System.out.println("0 para sair do programa");
@@ -29,9 +30,8 @@ public class Main {
                     System.out.println("nenhum carro cadastrado");
                 }
                 else{
-                    for (int i=0;i < carros.size();i++){
-                        System.out.println(carros.get(i).getNome() + " da marca " + carros.get(i).getMarca() + " da cor " + carros.get(i).getCor() + " cuja descrição é " + carros.get(i).getDesc() + "\n");
-                    }
+                    Carro carro = new Carro();
+                    carro.listarCarros(carros);
                 }
             }
 
@@ -41,6 +41,27 @@ public class Main {
 
                 carros.add(carro);
                 System.out.println("Carro " + carro.getNome() + " de ID " + carro.getID() + " cadastrado com sucesso");
+            }
+
+            if (menu == 3){
+                if (carros.isEmpty()){
+                    System.out.println("nenhum carro cadastrado");
+                }
+                else{
+                    Carro carro = new Carro();
+                    Aluguel aluguel = new Aluguel();
+
+                    System.out.println("Lista de todos os carros cadastrados");
+                    carro.listarCarros(carros);
+
+
+
+                    System.out.println("Infome qual carro e cor você quer alugar");
+                    String carro_alugar = in.nextLine();
+                    String cor_alugar = in.nextLine();
+
+                    aluguel.baixaCarro(carros, alugueis, carro_alugar, cor_alugar);
+                }
             }
 
             if (menu == 0){

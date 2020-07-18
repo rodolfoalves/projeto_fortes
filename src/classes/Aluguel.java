@@ -1,5 +1,6 @@
 package classes;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Aluguel {
@@ -67,4 +68,23 @@ public class Aluguel {
         this.desc = desc;
     }
 
+
+    public void baixaCarro(ArrayList <Carro> carros, ArrayList <Aluguel> alugueis, String carro, String cor){
+        if (carros.isEmpty()){
+            System.out.println("Carro não cadastrado");
+        }
+        else {
+            for (int i =0; i<carros.size();i++){
+                if (carros.get(i).getNome().equals(carro) && carros.get(i).getCor().equals(cor)){
+                    if (carros.get(i).isRua()){
+                        System.out.println("Carro já alugado");
+                    }
+                    else {
+                        carros.get(i).setRua(true);
+                        System.out.println("Carro Alugado com Sucesso");
+                    }
+                }
+            }
+        }
+    }
 }

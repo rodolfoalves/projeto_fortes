@@ -2,6 +2,7 @@ package classes;
 
 import jdk.internal.cmm.SystemResourcePressureImpl;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.UUID;
 
@@ -12,6 +13,7 @@ public class Carro {
     private String cor;
     private String desc;
     private int ano;
+    private boolean rua;
 
     public String getID() {
         return ID;
@@ -61,12 +63,22 @@ public class Carro {
         this.ano = ano;
     }
 
+    public boolean isRua() {
+        return rua;
+    }
+
+    public void setRua(boolean rua) {
+        this.rua = rua;
+    }
+
     public Carro cadastrar_carro(){
         Scanner in = new Scanner(System.in);
         UUID uuid = UUID.randomUUID();
 
         Carro carro = new Carro();
+
         carro.setID(String.valueOf(uuid));
+        carro.setRua(false);
 
         System.out.println("Infome o nome do Carro");
         carro.setNome(in.nextLine());
@@ -80,6 +92,15 @@ public class Carro {
         System.out.println("Informe a descrição do Carro");
         carro.setDesc(in.nextLine());
 
+        System.out.println("Informe o ano do Carro");
+        carro.setAno(in.nextInt());
+
         return carro;
+    }
+
+    public void listarCarros(ArrayList<Carro> carros){
+        for (int i=0;i < carros.size();i++){
+            System.out.println(carros.get(i).getNome() + " da marca " + carros.get(i).getMarca() + " da cor " + carros.get(i).getCor() + " cuja descrição é " + carros.get(i).getDesc() + "\n");
+        }
     }
 }
