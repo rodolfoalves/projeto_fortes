@@ -1,7 +1,7 @@
 package classes;
 
 public class Cliente {
-    private int ID;
+    private int Id;
     private String nome;
     private String login;
     private String senha;
@@ -9,11 +9,11 @@ public class Cliente {
     private String email;
 
     public int getID() {
-        return ID;
+        return Id;
     }
 
     public void setID(int ID) {
-        this.ID = ID;
+        this.Id = ID;
     }
 
     public String getNome() {

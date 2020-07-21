@@ -1,11 +1,27 @@
-package classes;
+package database_estrucuture;
 
-public class Administrador {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "cliente")
+
+public class Dao_Cliente {
+    @Id
     private int ID;
+    @Column
     private String nome;
+    @Column
     private String login;
+    @Column
     private String senha;
+    @Column
+    private String cpf;
+    @Column
     private String email;
+
 
     public int getID() {
         return ID;
@@ -37,6 +53,14 @@ public class Administrador {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getEmail() {

@@ -1,4 +1,4 @@
-package database;
+package database_estrucuture;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
