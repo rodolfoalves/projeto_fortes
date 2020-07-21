@@ -53,6 +53,7 @@ public class Main {
             }
 
             if (menu == 3){
+                /*
                 if (carros.isEmpty()){
                     System.out.println("nenhum carro cadastrado");
                 }
@@ -71,6 +72,10 @@ public class Main {
 
                     aluguel.baixaCarro(carros, alugueis, carro_alugar, cor_alugar);
                 }
+                */
+
+                Aluguel aluguel = new Aluguel();
+                aluguel.baixaCarroDB();
             }
 
             if (menu == 5){

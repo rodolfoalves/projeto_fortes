@@ -1,7 +1,12 @@
 package classes;
 
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
+import java.util.UUID;
 
 public class Aluguel {
     private String ID;
@@ -86,5 +91,86 @@ public class Aluguel {
                 }
             }
         }
+    }
+
+    public void baixaCarroDB(){
+        Scanner in = new Scanner(System.in);
+
+        System.out.println("informe o login do cliente para consultar cadastro");
+        String login_cliente = in.nextLine();
+
+        System.out.println("informe o nome do carro para conultar cadastro");
+        String nome_carro = in.nextLine();
+
+        System.out.println("informe a descricao do aluguel");
+        String desc = in.nextLine();
+
+        System.out.println("informe a data do aluguel");
+        String data = in.nextLine();
+
+
+        System.out.println("informe o valor estimado de pagamento");
+        int valor = in.nextInt();
+
+
+        java.sql.Connection c = null;
+        Statement stmt = null;
+
+        String id_carro = null;
+        String rua = null;
+
+        String id_cliente = null;
+        String id_aluguel = null;
+
+        try {
+            Class.forName("org.postgresql.Driver");
+            c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/demo", "postgres", "arquivo41");
+            c.setAutoCommit(false);
+//            System.out.println("Opened database successfully");
+
+            stmt = c.createStatement();
+            ResultSet rs = stmt.executeQuery( "select id from cliente where cliente.login = '" + login_cliente + "';" );
+
+            while (rs.next()){
+              id_cliente = String.valueOf(rs.getInt("id"));
+              //System.out.println( "ID = " + id_cliente );
+            }
+
+            stmt = c.createStatement();
+            rs = stmt.executeQuery( "select id,rua from carros where carros.nome = '" + nome_carro + "';" );
+
+            while (rs.next()){
+                id_carro = String.valueOf(rs.getString("id"));
+                rua = String.valueOf(rs.getString("rua"));
+                //System.out.println( "ID = " + id_carro );
+                //System.out.println( "disponibilidade = " + rua );
+            }
+
+            if (rua.equals("true")){
+                System.out.println("carro nao disponivel para aluguel");
+            }
+            else{
+                UUID uuid = UUID.randomUUID();
+
+
+                stmt = c.createStatement();
+                String sqlInsert = "Insert Into aluguel values ('" + uuid.toString() + "', '" + id_cliente + "', '" + id_carro + "', '"
+                        + data + "', '" + valor + "', '" + desc + "');";
+                stmt.executeUpdate(sqlInsert);
+
+
+                String sqlUpdate = "UPDATE carros set rua = 'true' where nome = '" + nome_carro + "';";
+                stmt.executeUpdate(sqlUpdate);
+                c.commit();
+            }
+
+            rs.close();
+            stmt.close();
+            c.close();
+        } catch ( Exception e ) {
+            System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+            System.exit(0);
+        }
+
     }
 }
