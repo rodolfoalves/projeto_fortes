@@ -160,7 +160,7 @@ public class Carro {
                 System.out.println( "Cor = " + cor );
                 System.out.println( "Descricao = " + descricao );
                 System.out.println( "Ano = " + ano );
-                System.out.println( "Disponivel = " + rua );
+                System.out.println( "Esta na Rua ? = " + rua );
 
                 System.out.println();
             }

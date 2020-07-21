@@ -132,7 +132,7 @@ public class Aluguel {
             ResultSet rs = stmt.executeQuery( "select id from cliente where cliente.login = '" + login_cliente + "';" );
 
             while (rs.next()){
-              id_cliente = String.valueOf(rs.getInt("id"));
+              id_cliente = String.valueOf(rs.getString("id"));
               //System.out.println( "ID = " + id_cliente );
             }
 
@@ -158,7 +158,6 @@ public class Aluguel {
                         + data + "', '" + valor + "', '" + desc + "');";
                 stmt.executeUpdate(sqlInsert);
 
-
                 String sqlUpdate = "UPDATE carros set rua = 'true' where nome = '" + nome_carro + "';";
                 stmt.executeUpdate(sqlUpdate);
                 c.commit();
@@ -171,6 +170,10 @@ public class Aluguel {
             System.err.println( e.getClass().getName()+": "+ e.getMessage() );
             System.exit(0);
         }
+
+    }
+
+    public void retirarAluguel(){
 
     }
 }
