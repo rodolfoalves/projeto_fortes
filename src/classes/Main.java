@@ -9,8 +9,28 @@ import java.util.Scanner;
 public class Main {
     public static void main (String[] args)throws IOException{
         Scanner in = new Scanner(System.in);
+
+
         ArrayList<Carro> carros = new ArrayList<>();
         ArrayList<Aluguel> alugueis = new ArrayList<>();
+        Administrador administrador = new Administrador();
+
+
+        System.out.println("Bem Vindos ao Demo Loja de Aluguel de carros");
+        System.out.println("Rodolfo Sobreira Alves");
+
+        int ok = 0;
+
+        do {
+            System.out.println("Informe Login");
+            String login = in.nextLine();
+            System.out.println("Informe Senha");
+            String senha = in.nextLine();
+
+            ok = administrador.validarADM(login, senha);
+
+        }while (ok == 0);
+
 
         int saida = 1;
 
@@ -20,11 +40,11 @@ public class Main {
             System.out.println("2 para cadastrar Carro");
             System.out.println("3 para dar entrada em um aluguel");
             System.out.println("4 para fechar um aluguel");
-            System.out.println("5 tela demo");
+            //System.out.println("5 tela demo");
             System.out.println("6 para cadastrar clientes");
             System.out.println("7 para mostrar clientes");
-            System.out.println("8 para cadastrar administradores");
-            System.out.println("9 para mostrar administradores");
+            //System.out.println("8 para cadastrar administradores");
+            //System.out.println("9 para mostrar administradores");
             System.out.println("0 para sair do programa");
             int menu = Integer.parseInt(in.nextLine());
 
