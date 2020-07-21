@@ -10,8 +10,6 @@ public class Main {
     public static void main (String[] args)throws IOException{
         Scanner in = new Scanner(System.in);
         ArrayList<Carro> carros = new ArrayList<>();
-        ArrayList<Administrador> administradors = new ArrayList<>();
-        ArrayList<Cliente> clientes = new ArrayList<>();
         ArrayList<Aluguel> alugueis = new ArrayList<>();
 
         int saida = 1;
@@ -31,6 +29,7 @@ public class Main {
             int menu = Integer.parseInt(in.nextLine());
 
             if (menu == 1){
+                /*
                 if (carros.isEmpty()){
                     System.out.println("nenhum carro cadastrado");
                 }
@@ -38,6 +37,11 @@ public class Main {
                     Carro carro = new Carro();
                     carro.listarCarros(carros);
                 }
+                */
+
+                Carro carro = new Carro();
+                carro.listarCarros(carros);
+
             }
 
             if (menu == 2){

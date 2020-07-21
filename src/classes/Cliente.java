@@ -124,7 +124,7 @@ public class Cliente {
             ResultSet rs = stmt.executeQuery( "select * from cliente" );
 
             while ( rs.next() ) {
-                int id = rs.getInt("id");
+                String id = String.valueOf(rs.getInt("id"));
                 String  nome = rs.getString("nome");
                 String  login = rs.getString("login");
                 String  senha = rs.getString("senha");
