@@ -22,10 +22,11 @@ public class Main {
             System.out.println("2 para cadastrar Carro");
             System.out.println("3 para dar entrada em um aluguel");
             System.out.println("4 para fechar um aluguel");
-            System.out.println("5 para cadastrar administradores");
+            System.out.println("5 tela demo");
             System.out.println("6 para cadastrar clientes");
-            System.out.println("7 para mostrar administradores");
-            System.out.println("8 para mostrar clientes");
+            System.out.println("7 para mostrar clientes");
+            System.out.println("8 para cadastrar administradores");
+            System.out.println("9 para mostrar administradores");
             System.out.println("0 para sair do programa");
             int menu = Integer.parseInt(in.nextLine());
 
@@ -71,6 +72,16 @@ public class Main {
             if (menu == 5){
                 TelaCadastro executar = new TelaCadastro("Cadastro de Cliente");
                 //executar.mostrarTela();
+            }
+
+            if (menu == 6){
+                Cliente cliente = new Cliente();
+                cliente.cadastrarCliente();
+            }
+
+            if (menu == 7){
+                Cliente cliente = new Cliente();
+                cliente.mostrarCadastrosCliente();
             }
 
             if (menu == 0){
